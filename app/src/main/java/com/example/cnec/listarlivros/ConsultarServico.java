@@ -12,9 +12,17 @@ import java.net.URL;
  * Created by CNEC on 02/10/2018.
  */
 
-public class ConsultarServico extends AsyncTask {
+public class ConsultarServico extends AsyncTask<String, Void, String> {
+
+    private MainActivity ma;
+
+    public ConsultarServico(MainActivity ma) {
+        this.ma = ma;
+    }
+
+
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected String doInBackground(String... objects) {
         System.out.println("Buscar os dados...");
 
         URL url;
@@ -51,10 +59,11 @@ public class ConsultarServico extends AsyncTask {
 
     }
 
-    @Override
-    protected void onPostExecute(Object o) {
-        //super.onPostExecute(o);
 
-        Log.d("Retorno:", o.toString());
+    @Override
+    protected void onPostExecute(String o) {
+        super.onPostExecute(o);
+
+        ma.exibirListagem(o);
     }
 }
