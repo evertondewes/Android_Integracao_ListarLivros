@@ -1,5 +1,6 @@
 package com.example.cnec.listarlivros;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,19 +29,46 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONArray jsonArray = new JSONArray(o);
             TableLayout tl = findViewById(R.id.tl);
+            tl.removeAllViews();
+
+            TextView twId = new TextView(this);
+            twId.setText("Id");
+            twId.setTextSize(30);
+
+            TextView twNome = new TextView(this);
+            twNome.setText("Ano");
+            twNome.setTextSize(30);
+
+            TextView twAno = new TextView(this);
+            twAno.setText("Nome");
+            twAno.setTextSize(30);
+
+            TableRow tr = new TableRow(this);
+
+            tr.addView(twId);
+            tr.addView(twAno);
+            tr.addView(twNome);
+            tl.addView(tr);
+
+
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject JSONLivro = jsonArray.getJSONObject(i);
 
-                TextView twNome = new TextView(this);
+                twId = new TextView(this);
+                twId.setText(JSONLivro.get("id").toString());
+                twId.setTextSize(30);
+
+                twNome = new TextView(this);
                 twNome.setText(JSONLivro.get("nome").toString());
                 twNome.setTextSize(30);
 
-                TextView twAno = new TextView(this);
+                twAno = new TextView(this);
                 twAno.setText(JSONLivro.get("ano").toString());
                 twAno.setTextSize(30);
 
-                TableRow tr = new TableRow(this);
+                tr = new TableRow(this);
 
+                tr.addView(twId);
                 tr.addView(twAno);
                 tr.addView(twNome);
                 tl.addView(tr);

@@ -23,7 +23,7 @@ public class ConsultarServico extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... objects) {
-        System.out.println("Buscar os dados...");
+        System.out.println("Buscar os dados..");
 
         URL url;
         HttpURLConnection urlConnection = null;
@@ -63,6 +63,7 @@ public class ConsultarServico extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
+
 
         ma.exibirListagem(o);
     }
