@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -22,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ListarLivros(View v){
+
         ConsultarServico c = new ConsultarServico(this);
-        c.execute();
+
+        EditText et = findViewById(R.id.tvNomeLivro);
+
+        c.execute(et.getText().toString());
     }
     public void exibirListagem(String o) {
         try {

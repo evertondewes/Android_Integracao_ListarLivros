@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 /**
  * Created by CNEC on 02/10/2018.
@@ -23,6 +24,9 @@ public class ConsultarServico extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... objects) {
+
+        Log.d("Livro:", objects[0]);
+
         System.out.println("Buscar os dados..");
 
         URL url;
@@ -30,8 +34,14 @@ public class ConsultarServico extends AsyncTask<String, Void, String> {
 
         String r = new String();
         try {
-            url = new URL("http://10.0.2.2:80//android/json1/listar_livros.php");
 
+            if(objects[0]!=null) {
+                String nomeLivroCodificado = URLEncoder.encode(objects[0], "UTF-8");
+
+                url = new URL("http://10.0.2.2:80//android/json1/listar_livros.php?nome=" + nomeLivroCodificado);
+            } else{
+                url = new URL("http://10.0.2.2:80//android/json1/listar_livros.php");
+            }
             urlConnection = (HttpURLConnection) url.openConnection();
 
             InputStream in = urlConnection.getInputStream();
