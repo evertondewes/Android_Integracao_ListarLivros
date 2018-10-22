@@ -12,12 +12,19 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/tvNomeLivro"
+            android:id="@+id/etNomeLivro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name" />
+
+        <EditText
+            android:id="@+id/etAno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/button"
@@ -25,6 +32,13 @@
             android:layout_height="wrap_content"
             android:onClick="ListarLivros"
             android:text="Listar" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="adicionarLivro"
+            android:text="Adicionar" />
 
         <ScrollView
             android:layout_width="match_parent"

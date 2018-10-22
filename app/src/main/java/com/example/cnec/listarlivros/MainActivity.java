@@ -26,10 +26,23 @@ public class MainActivity extends AppCompatActivity {
 
         ConsultarServico c = new ConsultarServico(this);
 
-        EditText et = findViewById(R.id.tvNomeLivro);
+        EditText et = findViewById(R.id.etNomeLivro);
 
         c.execute(et.getText().toString());
     }
+
+
+    public void adicionarLivro(View v) {
+        EditText etNome = findViewById(R.id.etNomeLivro);
+        EditText etAno = findViewById(R.id.etAno);
+
+        AdicionarLivro adicionarLivro = new AdicionarLivro();
+
+        adicionarLivro.execute(etNome.getText().toString(),
+                               etAno.getText().toString());
+
+    }
+
     public void exibirListagem(String o) {
         try {
             JSONArray jsonArray = new JSONArray(o);
