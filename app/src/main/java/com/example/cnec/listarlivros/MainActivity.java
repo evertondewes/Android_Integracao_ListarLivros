@@ -31,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
         c.execute(et.getText().toString());
     }
 
+    public void atualizarLivro(View v) {
+        EditText etNome = findViewById(R.id.etNomeLivro);
+        EditText etAno = findViewById(R.id.etAno);
+
+        AtualizarLivro atualizarLivro = new AtualizarLivro();
+
+        atualizarLivro.execute(etNome.getText().toString(),
+                etAno.getText().toString());
+
+    }
 
     public void adicionarLivro(View v) {
         EditText etNome = findViewById(R.id.etNomeLivro);
@@ -40,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         adicionarLivro.execute(etNome.getText().toString(),
                                etAno.getText().toString());
+
+    }
+
+    public void deletarLivro(View v) {
+        EditText etNome = findViewById(R.id.etNomeLivro);
+
+        DeletarLivro deletarLivro = new DeletarLivro();
+
+        deletarLivro.execute(etNome.getText().toString());
 
     }
 
@@ -54,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
             twId.setTextSize(30);
 
             TextView twNome = new TextView(this);
-            twNome.setText("Ano");
+            twNome.setText("Nome");
             twNome.setTextSize(30);
 
             TextView twAno = new TextView(this);
-            twAno.setText("Nome");
+            twAno.setText("Ano");
             twAno.setTextSize(30);
 
             TableRow tr = new TableRow(this);
